@@ -1,5 +1,4 @@
 #include <dirent.h>
-#include "libft.h"
 #include "ft_ls.h"
 
 /*
@@ -10,22 +9,25 @@
  *
  *	-l
  *		-	long form current directory
- *	
+ *
  *	-R
  *		-	list non-hidden files in directory and all child directories
- *	
+ *
  *	-r
  *		-	reverse order
  *
  *	-a
  *		- 	all files (hidden too)
  *
+ *	-t
+ *		-	sort by timestamp
+ *
  *	-path_to_dir
  *		-	list files in specified dir
  *
  */
 
-static int	list_length(struct s_dir *sdir)
+static int	s_dir_length(struct s_dir *sdir)
 {
 	int		len;
 
@@ -38,30 +40,46 @@ static int	list_length(struct s_dir *sdir)
 	return (len);
 }
 
-static void	*sort_list(struct s_dir *sdir)
+static void	*sort_s_dir(struct s_dir *sdir)
 {
 	struct s_dir	*nxt;
+	struct s_dir	*root;
 	char			*tmp_name;
 
 	nxt = sdir->next;
-	//tmp_name = NULL;	//?!
-	//		sdir->next != NULL?
-	while (sdir->next != NULL)
+	root = sdir;
+	while (nxt->next != NULL)
 	{
-		ft_putnbr(ft_strcmp(sdir->dir_name, nxt->dir_name));
-		if (ft_strcmp(sdir->dir_name, nxt->dir_name) > 0)
+		while (nxt != root)
 		{
-			tmp_name = sdir->dir_name;
-			sdir->dir_name = nxt->dir_name;
-			nxt->dir_name = tmp_name;
+			if (ft_strcmp(root->dir_name, nxt->dir_name) > 0)
+			{
+				tmp_name = root->dir_name;
+				root->dir_name = nxt->dir_name;
+				nxt->dir_name = tmp_name;
+			}
+			root = root->next;
 		}
-		sdir = sdir->next;
+		root = sdir;
 		nxt = nxt->next;
 	}
-	
 }
 
-static void	list_contents(char *path_name)
+static void	print_s_dir(struct s_dir *sdir)
+{
+	while (sdir != NULL)
+	{
+		ft_putstr(sdir->dir_name);
+		if (sdir->next == NULL)
+			ft_putchar('\n');
+		else
+			ft_putstr("  ");
+		//ft_putchar('\t');
+		sdir = sdir->next;
+	}
+}
+
+static struct s_dir	*get_contents(char *path_name)
 {
 	DIR				*d;
 	struct dirent	*dent;
@@ -69,14 +87,10 @@ static void	list_contents(char *path_name)
 	struct s_dir	*current;
 
 	root = NULL;
-	//if (dir = opendir(path_name) == NULL)
-	d = opendir(path_name);
-	if (d == NULL)
+	if ((d = opendir(path_name)) == NULL)
 	{
 		ft_putendl_fd("Error: ", 2);
 		exit(1);
-			//current->next = NULL;
-			//current->next = NULL;
 	}
 	while ((dent = readdir(d)) != NULL)
 	{
@@ -84,29 +98,22 @@ static void	list_contents(char *path_name)
 		{
 			current = (struct s_dir *)malloc(sizeof(struct s_dir));
 			current->dir_name = dent->d_name;
-			//current->next = NULL;
 			current->next = root;
 			root = current;
 		}
-			//current->next = NULL;
 	}
-	current = root;
-	ft_putnbr(list_length(current));
-	ft_putchar('\n');
-	sort_list(current);
-	while (current != NULL)
-	{
-		ft_putstr(current->dir_name);
-		ft_putchar('\t');
-		current = current->next;
-	}
-	
+	sort_s_dir(current);
+	return (root);
 }
 
 int		main(int argc, char **argv)
 {
+	struct s_dir	*sdir;
+
 	if (argc == 1)
-	{
-		list_contents("./");
-	}
+		sdir = get_contents("./");
+	else if (argc == 2 && (ft_strchr(argv[1], '/') != NULL))
+		sdir = get_contents(argv[1]);
+	print_s_dir(sdir);
+	return (0);
 }

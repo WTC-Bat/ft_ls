@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itobase.c                                       :+:      :+:    :+:   */
+/*   check_length.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/03 14:41:32 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/06 13:09:30 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/06/05 12:48:52 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/06/07 16:54:53 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf/includes/ft_printf.h"
 
-char	*ft_itobase(int n, int base)
+int	check_length(t_mods mods)
 {
-	char	*basechars;
-	char	*tmp;
-	char	*baseout;
+	int		len;
 	int		cnt;
-	int		i;
 
-	basechars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	len = ft_strlen(mods.fmtl);
 	cnt = 0;
-	tmp = (char *)malloc(sizeof(char) * 64);
-	baseout = (char *)malloc(sizeof(tmp));
-	while (n > 0)
+	while (cnt < len - 1)
 	{
-		i = n % base;
-		n = n / base;
-		tmp[cnt] = basechars[i];
+		if (mods.fmtl[cnt] != 'l' && mods.fmtl[cnt] != 'h' &&
+			mods.fmtl[cnt] != 'j' && mods.fmtl[cnt] != 'z')
+			return (0);
 		cnt++;
 	}
-	baseout = ft_strrev(tmp);
-	baseout[cnt] = '\0';
-	return (baseout);
+	return (1);
 }

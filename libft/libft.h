@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:00:25 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/03 14:11:50 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/07 17:01:20 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include "ft_printf/includes/ft_printf.h"
+
+# define BUFF_SIZE 32
 
 char	*ft_appendc(char *str, int c);
 char	*ft_itoa(int n);
@@ -57,6 +61,7 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_strequ(char const *s1, char const *s2);
 int		ft_strncmp(char const *s1, char const*s2, size_t n);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
+int		get_next_line(const int fd, char **line);
 size_t	ft_strlcat(char *dst, char *src, size_t size);
 size_t	ft_strlen(char const *str);
 size_t	ft_wcslen(const wchar_t *wcs);

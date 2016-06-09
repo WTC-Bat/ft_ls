@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlower.c                                      :+:      :+:    :+:   */
+/*   handle_cap_s.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 13:10:20 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/06 13:11:21 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/05/31 15:49:42 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/06/05 13:13:07 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf/includes/ft_printf.h"
 
-char	*ft_strlower(char const *str)
+char	*handle_cap_s(va_list vlst, t_mods mods)
 {
-	char	*out_str;
+	int		fmtl_len;
 	int		cnt;
+	char	*out_str;
+	wchar_t	*wcs;
 
-	out_str = NULL;
+	fmtl_len = ft_strlen(mods.fmtl);
 	cnt = 0;
-	out_str = (char *)malloc(sizeof(str));
-	while (str[cnt] != '\0')
+	if (fmtl_len > 1)
+		return ("ERROR: 'S' does not take any length modifier\n");
+	wcs = va_arg(vlst, wchar_t *);
+	out_str = (char *)malloc(sizeof(char) * ft_wcslen(wcs));
+	while (*wcs != '\0')
 	{
-		if (ft_isupper(str[cnt]))
-			out_str[cnt] = ft_tolower(str[cnt]);
-		else
-			out_str[cnt] = str[cnt];
+		out_str[cnt] = (char)*wcs;
 		cnt++;
+		wcs++;
 	}
 	out_str[cnt] = '\0';
-	return (out_str);
+	return (fmt_s(mods, out_str));
 }

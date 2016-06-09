@@ -1,4 +1,4 @@
-
+#include "libft/libft.h"
 
 #ifndef FT_LS_H
 # define FT_LS_H

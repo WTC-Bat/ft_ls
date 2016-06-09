@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   handle_c.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/15 15:18:41 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/15 15:18:44 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/06/02 15:51:33 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/06/05 16:51:42 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf/includes/ft_printf.h"
 
-char	*ft_itoa(int n)
+char	*handle_c(va_list vlst, t_mods mods)
 {
-	char	*c;
+	int		fmtl_len;
+	char	out_char;
+	wchar_t	wc;
 
-	c = (char *)malloc(sizeof(char *));
-	if (n >= 0)
+	if (mods.precision != -1)
+		return ("ERROR: 'c' cannot make use of precision\n");
+	fmtl_len = ft_strlen(mods.fmtl);
+	if (fmtl_len > 1 || mods.fmtl[fmtl_len] == 'C')
 	{
-		while (n != 0)
-		{
-			c--;
-			*c = '0' + (n % 10);
-			n = n / 10;
-		}
+		wc = va_arg(vlst, wchar_t);
+		out_char = (char)wc;
 	}
 	else
-	{
-		while (n != 0)
-		{
-			c--;
-			*c = '0' - (n % 10);
-			n = n / 10;
-		}
-		*--c = '-';
-	}
-	return (c);
+		out_char = (char)va_arg(vlst, int);
+	return (fmt_c(mods, out_char));
 }
