@@ -25,7 +25,7 @@ SRCS = ./ft_itoa.c ./ft_itobase.c ./ft_strcat.c ./ft_strchr.c ./ft_strcmp.c \
         ./ft_printf/handle_i.c ./ft_printf/handle_o.c ./ft_printf/handle_p.c \
         ./ft_printf/handle_s.c ./ft_printf/handle_u.c ./ft_printf/handle_x.c \
         ./ft_printf/has_checks.c ./ft_printf/is_checks.c ./ft_printf/mod_ops.c \
-        ./ft_printf/type_handling.c
+        ./ft_printf/type_handling.c ./ft_strcmp_low.c
 
 OBJS = ./ft_itoa.o ./ft_itobase.o ./ft_strcat.o ./ft_strchr.o ./ft_strcmp.o \
 	   	./ft_strcpy.o ./ft_strdup.o ./ft_strjoin.o ./ft_strmap.o ./ft_strmapi.o \
@@ -46,7 +46,8 @@ OBJS = ./ft_itoa.o ./ft_itobase.o ./ft_strcat.o ./ft_strchr.o ./ft_strcmp.o \
         ./check_length.o ./extra_formatting.o ./fmt_i.o ./fmt_o.o ./fmt_u.o \
         ./fmt_x.o ./ft_printf.o ./handle_c.o ./handle_cap_c.o ./handle_cap_s.o \
         ./handle_i.o ./handle_o.o ./handle_p.o ./handle_s.o ./handle_u.o \
-        ./handle_x.o ./has_checks.o ./is_checks.o ./mod_ops.o ./type_handling.o
+        ./handle_x.o ./has_checks.o ./is_checks.o ./mod_ops.o ./type_handling.o \
+        ./ft_strcmp_low.o
 
 all: $(NAME)
 
