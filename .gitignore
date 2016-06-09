@@ -1,0 +1,15 @@
+# Compiled sources & libraries
+*.o
+*.a
+a.out
+
+# Generated files
+.DS_Store
+._*
+.Trashes
+.Spotlight*
+
+# Test Files
+tst.c
+tst*.c
+*tst.c
