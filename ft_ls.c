@@ -74,7 +74,6 @@ static void	print_s_dir(struct s_dir *sdir)
 			ft_putchar('\n');
 		else
 			ft_putstr("  ");
-		//ft_putchar('\t');
 		sdir = sdir->next;
 	}
 }

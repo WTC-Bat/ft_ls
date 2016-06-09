@@ -9,4 +9,9 @@ struct	s_dir
 	struct s_dir	*next;
 };
 
+//struct	s_file
+//{
+//
+//};
+
 #endif
