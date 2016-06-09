@@ -197,6 +197,19 @@ int		main(int argc, char **argv)
 	ft_putendl("args analyzed");
 	sfile = s_file_init(lsargs);
 	ft_putendl("s_file initialized");
+
+	ft_putnbr(sfile->hlinks);
+	ft_putchar('\n');
+	ft_putendl(sfile->uname);
+	ft_putendl(sfile->gname);
+	ft_putnbr(sfile->size);
+	ft_putchar('\n');
+	ft_putstr(sfile->mod_time);
+	ft_putendl(sfile->name);
+	ft_putnbr(sfile->is_dir);
+	ft_putchar('\n');
+	ft_putendl(sfile->dir_path);
+
 	s_file_sort(sfile);
 	ft_putendl("s_file sorted");
 	//if (argc == 1)
