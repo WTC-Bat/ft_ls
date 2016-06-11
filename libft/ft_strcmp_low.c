@@ -7,6 +7,8 @@ int		ft_strcmp_low(char *s1, char *s2)
 
 	s1low = ft_strlower(s1);
 	s2low = ft_strlower(s2);
+	ft_putstr("S1LOW: ");
+	ft_putendl(s1low);
 	while (*s1low == *s2low)
 	{
 		if (*s1low == 0)

@@ -12,8 +12,6 @@ static void	lsargs_init(t_lsargs *lsargs)
 
 static void		lsargs_set(char c, t_lsargs *lsargs)
 {
-	ft_putchar(c);
-	ft_putchar('\n');
 	if (c == 'a')
 		lsargs->show_all = 1;
 	else if (c == 'l')
@@ -68,34 +66,19 @@ t_lsargs	analyze_args(char **argv)
 		if (arg_ispath(argv[scnt]) == 1)
 		{
 			lsargs.path = argv[scnt];
-			scnt++;
-			//continue;
+			if (lsargs.path[ft_strlen(lsargs.path)] != '/')
+				lsargs.path = ft_appendc(lsargs.path, '/');
 		}
-		//else
-		//{
-		//	lsargs.path = "./";
-		//	continue;
-		//}
-		while (argv[scnt][ccnt] != '\0')
+		else
 		{
-			lsargs_set(argv[scnt][ccnt], &lsargs);
-			ccnt++;
+			while (argv[scnt][ccnt] != '\0')
+			{
+				lsargs_set(argv[scnt][ccnt], &lsargs);
+				ccnt++;
+			}
 		}
 		ccnt = 0;
 		scnt++;
 	}
-	/*
-	ft_putnbr(lsargs.show_all);
-	ft_putchar('\n');
-	ft_putnbr(lsargs.long_form);
-	ft_putchar('\n');
-	ft_putnbr(lsargs.recursive);
-	ft_putchar('\n');
-	ft_putnbr(lsargs.reverse);
-	ft_putchar('\n');
-	ft_putnbr(lsargs.order_time);
-	ft_putchar('\n');
-	ft_putendl(lsargs.path);
-	*/
 	return (lsargs);
 }
