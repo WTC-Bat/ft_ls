@@ -39,7 +39,7 @@ t_lsargs		anlyze_args(char **argv);
 int				arg_ispath(char *arg);
 int				args_are_valid(char **argv);
 void			do_sort(struct s_file *root, struct s_file *nxt);
-void			*format_size(struct s_file *sfile);
+void			format_size(struct s_file *sfile);
 char			*format_time(time_t *ttmtime);
 void			handle_print(struct s_file *sfile, t_lsargs lsargs);
 int				s_file_length(struct s_file *sfile);
