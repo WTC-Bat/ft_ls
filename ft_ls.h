@@ -22,12 +22,12 @@ typedef struct	s_lsargs
 
 struct			s_file
 {
-	//char			*perms;
+	char			*perms;
 	int				hlinks;
 	char			*uname;
 	char			*gname;
 	size_t			size;
-	char			*mod_time;
+	time_t			mod_time;
 	char			*name;
 	int				is_dir;
 	char			*dir_path;

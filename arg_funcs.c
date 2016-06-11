@@ -84,7 +84,7 @@ t_lsargs	analyze_args(char **argv)
 		ccnt = 0;
 		scnt++;
 	}
-	//
+	/*
 	ft_putnbr(lsargs.show_all);
 	ft_putchar('\n');
 	ft_putnbr(lsargs.long_form);
@@ -96,6 +96,6 @@ t_lsargs	analyze_args(char **argv)
 	ft_putnbr(lsargs.order_time);
 	ft_putchar('\n');
 	ft_putendl(lsargs.path);
-	//
+	*/
 	return (lsargs);
 }
