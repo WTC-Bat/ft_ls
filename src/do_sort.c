@@ -1,4 +1,4 @@
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 static void	do_sort2(struct s_file *root, struct s_file *nxt)
 {

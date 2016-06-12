@@ -1,4 +1,4 @@
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 #include "do_sort.c"
 
 void	s_file_sort_az(struct s_file *sfile)

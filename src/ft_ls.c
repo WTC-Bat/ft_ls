@@ -1,4 +1,4 @@
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 //
 #include "s_file_funcs.c"
 #include "arg_funcs.c"

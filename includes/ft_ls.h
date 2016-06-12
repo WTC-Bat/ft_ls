@@ -7,7 +7,7 @@
 # include <time.h>
 # include <grp.h>
 # include <sys/stat.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_lsargs
 {

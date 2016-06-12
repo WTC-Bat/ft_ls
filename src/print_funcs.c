@@ -1,4 +1,4 @@
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 static void	s_file_prent_basic(struct s_file *sfile)
 {

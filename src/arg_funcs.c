@@ -1,4 +1,4 @@
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 static void	lsargs_init(t_lsargs *lsargs)
 {

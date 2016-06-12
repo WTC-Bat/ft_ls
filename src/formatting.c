@@ -1,11 +1,9 @@
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
 static int	get_longest(struct s_file *sfile)
 {
 	int				longest;
-	int				cnt;
 	int				len;
-	struct s_file	*root;
 
 	longest = 0;
 	while (sfile != NULL)
