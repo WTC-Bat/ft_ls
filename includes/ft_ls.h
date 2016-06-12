@@ -45,6 +45,8 @@ void			handle_print(struct s_file *sfile, t_lsargs lsargs);
 int				s_file_length(struct s_file *sfile);
 char			*s_file_permissions(struct stat st);
 void			s_file_sort_az(struct s_file *sfile);
+void			s_file_sort_az_rev(struct s_file *sfile);
 void			s_file_sort_mtime(struct s_file *sfile);
+void			s_file_sort_mtime_rev(struct s_file *sfile);
 
 #endif

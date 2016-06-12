@@ -92,7 +92,16 @@ int		main(int argc, char **argv)
 		exit(1);
 	lsargs = analyze_args(argv);
 	sfile = s_file_init(lsargs);
-	s_file_sort_az(sfile);		//!
+	if (lsargs.order_time == 1)
+		if (lsargs.reverse == 1)
+			s_file_sort_mtime_rev(sfile);
+		else
+			s_file_sort_mtime(sfile);
+	else
+		if (lsargs.reverse == 1)
+			s_file_sort_az_rev(sfile);
+		else
+			s_file_sort_az(sfile);
 	handle_print(sfile, lsargs);
 	return (0);
 }

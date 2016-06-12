@@ -1,3 +1,2 @@
-0	-	If the path specified is a "backward path", said backward path will
-		be joined with an incorrect path name....... I think
-		[Check path joining]
+0	-	problem with comparing upper and lower case strings
+0	-	Too many lines
