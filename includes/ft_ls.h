@@ -35,7 +35,7 @@ struct			s_file
 	struct s_file	*next;
 };
 
-t_lsargs		anlyze_args(char **argv);
+t_lsargs		analyze_args(char **argv);
 int				arg_ispath(char *arg);
 int				args_are_valid(char **argv);
 void			do_sort(struct s_file *root, struct s_file *nxt);

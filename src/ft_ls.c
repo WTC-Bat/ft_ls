@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/06/13 15:09:00 by mvanwyk          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/ft_ls.h"
-//
-#include "s_file_funcs.c"
-#include "arg_funcs.c"
-#include "print_funcs.c"
-#include "formatting.c"
-#include "s_file_sort.c"
+//#include "s_file_funcs.c"
+//#include "arg_funcs.c"
+//#include "print_funcs.c"
+//#include "formatting.c"
+//#include "s_file_sort.c"
 
 /*
  *	ft_ls:
