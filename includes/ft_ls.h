@@ -16,6 +16,7 @@ typedef struct	s_lsargs
 	int		recursive;
 	int		reverse;
 	int		order_time;
+	int		all_members;
 	char	*path;
 }				t_lsargs;
 
@@ -46,6 +47,7 @@ int				s_file_length(struct s_file *sfile);
 char			*s_file_permissions(struct stat st);
 void			s_file_sort_az(struct s_file *sfile);
 void			s_file_sort_az_rev(struct s_file *sfile);
+void			s_file_print_members(struct s_file *sfile);
 void			s_file_sort_mtime(struct s_file *sfile);
 void			s_file_sort_mtime_rev(struct s_file *sfile);
 

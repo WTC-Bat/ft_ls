@@ -9,6 +9,7 @@ ft_ls
 ._*
 .Trashes
 .Spotlight*
+*.c.swp
 
 # Test Files
 tst.c

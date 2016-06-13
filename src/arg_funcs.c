@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:29 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 15:05:27 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/13 16:40:17 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ static void		lsargs_set(char c, t_lsargs *lsargs)
 		lsargs->order_time = 1;
 	else if (c == 'R')
 		lsargs->recursive = 1;
+	else if (c == 'Z')
+		lsargs->all_members = 1;
 }
 
 int			arg_ispath(char *arg)

@@ -6,42 +6,11 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 15:09:00 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/13 16:41:32 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
-//#include "s_file_funcs.c"
-//#include "arg_funcs.c"
-//#include "print_funcs.c"
-//#include "formatting.c"
-//#include "s_file_sort.c"
-
-/*
- *	ft_ls:
- *
- *	-NO_OPTION
- *		-	list non-hidden files in current directory
- *
- *	-l
- *		-	long form current directory
- *
- *	-R
- *		-	list non-hidden files in directory and all child directories
- *
- *	-r
- *		-	reverse order
- *
- *	-a
- *		- 	all files (hidden too)
- *
- *	-t
- *		-	sort by timestamp
- *
- *	-path_to_dir
- *		-	list files in specified dir
- *
- */
 
 static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 {
@@ -70,15 +39,18 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		current->mod_time = format_time(&st.st_mtime);
 		current->name = dent->d_name;
 		current->is_dir = S_ISDIR(st.st_mode);
-		current->dir_path = ft_strjoin(lsargs.path, dent->d_name);	//!
+		//current->dir_path = ft_strjoin(lsargs.path, dent->d_name);	//!
+		current->dir_path = pth;
 		current->next = root;
 		root = current;
 	}
 	format_size(root);
+	//free(pth);
 	return (root);
 }
 
-static struct s_file	*s_file_init(t_lsargs lsargs)
+//static!
+struct s_file	*s_file_init(t_lsargs lsargs)
 {
 	DIR				*d;
 	struct s_file	*sfile;
@@ -94,7 +66,24 @@ static struct s_file	*s_file_init(t_lsargs lsargs)
 	return (sfile);
 }
 
-int		main(int argc, char **argv)
+/*
+static void				handle_recursion(struct s_file *sfile, t_lsargs lsargs)
+{
+	struct s_file	*sfdir;
+	t_lsargs		lsargs;
+
+	//sfdir = NULL;
+	//lsargs = NULL;
+	while (sfile != NULL)
+	{
+		if (sfile->is_dir == 1)
+		{
+		}
+	}
+}
+*/
+
+int						main(int argc, char **argv)
 {
 	struct s_file	*sfile;
 	t_lsargs		lsargs;
@@ -103,16 +92,23 @@ int		main(int argc, char **argv)
 		exit(1);
 	lsargs = analyze_args(argv);
 	sfile = s_file_init(lsargs);
-	if (lsargs.order_time == 1)
-		if (lsargs.reverse == 1)
-			s_file_sort_mtime_rev(sfile);
-		else
-			s_file_sort_mtime(sfile);
-	else
-		if (lsargs.reverse == 1)
-			s_file_sort_az_rev(sfile);
-		else
-			s_file_sort_az(sfile);
-	handle_print(sfile, lsargs);
+	if (lsargs.all_members == 1)
+		s_file_print_members(sfile);
+	//if (lsargs.recursive == 1)
+	//	handle_recursion(sfile, lsargs);
+	//else
+	//{
+	////	if (lsargs.order_time == 1)
+	////		if (lsargs.reverse == 1)
+	////			s_file_sort_mtime_rev(sfile);
+	////		else
+	////			s_file_sort_mtime(sfile);
+	////	else
+	////		if (lsargs.reverse == 1)
+	////			s_file_sort_az_rev(sfile);
+	////		else
+	////			s_file_sort_az(sfile);
+	//}
+	//handle_print(sfile, lsargs);
 	return (0);
 }

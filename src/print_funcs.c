@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:46 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 15:05:54 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/13 16:33:44 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,18 @@
 
 static void	s_file_prent_basic(struct s_file *sfile)
 {
+	//struct s_file	*sfdir;
+	//t_lsargs		lsargs;
+
 	ft_putstr(sfile->name);
 	if (sfile->next == NULL)
 		ft_putchar('\n');
 	else
 		ft_putstr("  ");
+
+	//if (sfile.is_dir)
+	//{
+	//}
 }
 
 static void	s_file_prent_long(struct s_file *sfile)
@@ -37,6 +44,36 @@ static void	s_file_prent_long(struct s_file *sfile)
 	ft_putchar(' ');
 	ft_putstr(sfile->name);
 	ft_putchar('\n');
+}
+
+void	s_file_print_members(struct s_file *sfile)
+{
+	while (sfile != NULL)
+	{
+		ft_putstr("Permissions:\t");
+		ft_putendl(sfile->perms);
+		ft_putstr("Hardlinks:\t");
+		ft_putnbr(sfile->hlinks);
+		ft_putchar('\n');
+		ft_putstr("User Name:\t");
+		ft_putendl(sfile->uname);
+		ft_putstr("Group Name:\t");
+		ft_putendl(sfile->gname);
+		ft_putstr("Size:\t\t");
+		ft_putnbr(sfile->size);
+		ft_putchar('\n');
+		ft_putstr("Modified Time:\t");
+		ft_putendl(sfile->mod_time);
+		ft_putstr("Name:\t\t");
+		ft_putendl(sfile->name);
+		ft_putstr("Is Directory:\t");
+		ft_putnbr(sfile->is_dir);
+		ft_putchar('\n');
+		ft_putstr("Directory Path:\t");
+		ft_putendl(sfile->dir_path);
+		ft_putchar('\n');
+		sfile = sfile->next;
+	}
 }
 
 void	handle_print(struct s_file *sfile, t_lsargs lsargs)
