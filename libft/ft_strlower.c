@@ -19,7 +19,7 @@ char	*ft_strlower(char const *str)
 
 	out_str = NULL;
 	cnt = 0;
-	out_str = (char *)malloc(sizeof(char) * ft_strlen(str) + 1);
+	out_str = (char *)malloc(sizeof(str));
 	while (str[cnt] != '\0')
 	{
 		if (ft_isupper(str[cnt]))

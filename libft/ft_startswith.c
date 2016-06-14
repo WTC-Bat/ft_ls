@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_startswith.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/09 12:20:55 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/05/09 12:40:10 by mvanwyk          ###   ########.fr       */
+/*   Created: 2016/06/14 14:14:27 by mvanwyk           #+#    #+#             */
+/*   Updated: 2016/06/14 14:27:28 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *str)
+int		ft_startswith(char *str, char *start)
 {
-	char	*out_str;
+	int		startlen;
 	int		cnt;
 
-	out_str = (char *)malloc(sizeof(char *) * ft_strlen(str));
+	startlen = ft_strlen(start);
 	cnt = 0;
-	while (str[cnt])
+	while (cnt < startlen)
 	{
-		out_str[cnt] = str[cnt];
+		if (str[cnt] != start[cnt])
+			return (0);
 		cnt++;
 	}
-	out_str[cnt] = '\0';
-	return (out_str);
+	return (1);
 }

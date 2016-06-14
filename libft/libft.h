@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 11:00:25 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/07 17:01:20 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/14 14:26:35 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	*ft_strupper(char const *str);
 char	ft_tolower(int c);
 char	ft_toupper(int c);
 int		ft_atoi(char *str);
+int		ft_endswith(char *str, char *end);
 int		ft_indexof(char const *str, int c);
 int		ft_lindexof(char const *str, int c);
 int		ft_isalnum(int c);
@@ -57,6 +58,7 @@ int		ft_isnegative(int n);
 int		ft_isupper(int c);
 int		ft_isprint(int c);
 int		ft_memcmp(void *s1, void *s2, size_t n);
+int		ft_startswith(char *str, char *start);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strcmp_low(char *s1, char *s2);
 int		ft_strequ(char const *s1, char const *s2);

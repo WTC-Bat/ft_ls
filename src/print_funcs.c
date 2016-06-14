@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:46 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 16:33:44 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/14 15:21:34 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,17 @@
 
 static void	s_file_prent_basic(struct s_file *sfile)
 {
-	//struct s_file	*sfdir;
-	//t_lsargs		lsargs;
+	ft_putstr(sfile->name);
+	if (sfile->next == NULL)
+		ft_putchar('\n');
+	else
+		ft_putstr("  ");
+}
+
+/*
+static void	s_file_prent_basic(struct s_file *sfile, t_lsargs lsargs)
+{
+	struct s_file	*sfdir;
 
 	ft_putstr(sfile->name);
 	if (sfile->next == NULL)
@@ -23,10 +32,20 @@ static void	s_file_prent_basic(struct s_file *sfile)
 	else
 		ft_putstr("  ");
 
-	//if (sfile.is_dir)
-	//{
-	//}
+	if (sfile->is_dir == 1)
+	{
+		if (lsargs.recursive == 1)
+		{
+			ft_putchar('\n');
+			lsargs.path = sfile->dir_path;	//!
+			ft_putstr("LSARGS.PATH: ");
+			ft_putendl(lsargs.path);
+			sfdir = s_file_init(lsargs);
+			s_file_prent_basic(sfdir, lsargs);
+		}
+	}
 }
+*/
 
 static void	s_file_prent_long(struct s_file *sfile)
 {

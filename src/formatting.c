@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:45 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 15:05:37 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/14 15:22:34 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void		format_size(struct s_file *sfile)
 		len = ft_strlen(fsize);
 		if (len < longest)
 		{
-			while (cnt < (longest - len - 3))	//!
+			//while (cnt < (longest - len - 3))	//!
+			while (cnt < (longest - len))	//!
 			{
 				fsize = ft_prependc(fsize, ' ');
 				cnt++;

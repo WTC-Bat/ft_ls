@@ -44,6 +44,7 @@ void			format_size(struct s_file *sfile);
 char			*format_time(time_t *ttmtime);
 void			handle_print(struct s_file *sfile, t_lsargs lsargs);
 int				s_file_length(struct s_file *sfile);
+struct s_file	*s_file_init(t_lsargs lsargs);
 char			*s_file_permissions(struct stat st);
 void			s_file_sort_az(struct s_file *sfile);
 void			s_file_sort_az_rev(struct s_file *sfile);

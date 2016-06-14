@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 16:41:32 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/06/14 15:15:06 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,17 +98,17 @@ int						main(int argc, char **argv)
 	//	handle_recursion(sfile, lsargs);
 	//else
 	//{
-	////	if (lsargs.order_time == 1)
-	////		if (lsargs.reverse == 1)
-	////			s_file_sort_mtime_rev(sfile);
-	////		else
-	////			s_file_sort_mtime(sfile);
-	////	else
-	////		if (lsargs.reverse == 1)
-	////			s_file_sort_az_rev(sfile);
-	////		else
-	////			s_file_sort_az(sfile);
+		if (lsargs.order_time == 1)
+			if (lsargs.reverse == 1)
+				s_file_sort_mtime_rev(sfile);
+			else
+				s_file_sort_mtime(sfile);
+		else
+			if (lsargs.reverse == 1)
+				s_file_sort_az_rev(sfile);
+			else
+				s_file_sort_az(sfile);
 	//}
-	//handle_print(sfile, lsargs);
+	handle_print(sfile, lsargs);
 	return (0);
 }

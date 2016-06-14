@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 char	ft_tolower(int c)
 {
-	if (ft_isupper(c) == 1)
-		return (c + 32);
-	else
+	if (c < 65 || c > 90)
 		return (c);
+	else
+		return (c + 32);
 }

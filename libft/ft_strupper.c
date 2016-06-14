@@ -4,7 +4,7 @@ char	*ft_strupper(char const *str)
 {
 	char	*out_str;
 	int		cnt;
-
+	
 	out_str = NULL;
 	cnt = 0;
 	out_str = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1));

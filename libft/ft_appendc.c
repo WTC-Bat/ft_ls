@@ -5,7 +5,7 @@ char	*ft_appendc(char *str, int c)
 	int		len;
 	int		cnt;
 	char	*out_str;
-	
+
 	len = ft_strlen(str);
 	cnt = 0;
 	out_str = (char *)malloc(sizeof(char) * (len + 2));
