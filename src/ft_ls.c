@@ -37,7 +37,6 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		current->size = st.st_size;
 		current->ttmtime = st.st_mtime;
 		current->mod_time = format_time(&st.st_mtime);
-		current->block_size = st.st_blksize;
 		current->block_count = st.st_blocks;
 		current->name = dent->d_name;
 		current->is_dir = 0;			//

@@ -30,7 +30,6 @@ struct			s_file
 	char			*strsize;
 	time_t			ttmtime;
 	char			*mod_time;
-	blksize_t		block_size;
 	blkcnt_t		block_count;
 	char			*name;
 	int				is_dir;
