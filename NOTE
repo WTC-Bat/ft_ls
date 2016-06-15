@@ -1,3 +1,4 @@
 0	-	problem with comparing upper and lower case strings
 0	-	Too many lines
 0	-	May need padding for number of hardlinks if count is over 9
+0	-	"Block Count" in "total" is showing a different value to 'ls'
