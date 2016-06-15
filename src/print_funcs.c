@@ -21,32 +21,6 @@ static void	s_file_prent_basic(struct s_file *sfile)
 		ft_putstr("  ");
 }
 
-/*
-static void	s_file_prent_basic(struct s_file *sfile, t_lsargs lsargs)
-{
-	struct s_file	*sfdir;
-
-	ft_putstr(sfile->name);
-	if (sfile->next == NULL)
-		ft_putchar('\n');
-	else
-		ft_putstr("  ");
-
-	if (sfile->is_dir == 1)
-	{
-		if (lsargs.recursive == 1)
-		{
-			ft_putchar('\n');
-			lsargs.path = sfile->dir_path;	//!
-			ft_putstr("LSARGS.PATH: ");
-			ft_putendl(lsargs.path);
-			sfdir = s_file_init(lsargs);
-			s_file_prent_basic(sfdir, lsargs);
-		}
-	}
-}
-*/
-
 static void	s_file_prent_long(struct s_file *sfile)
 {
 	ft_putstr(sfile->perms);
@@ -65,6 +39,20 @@ static void	s_file_prent_long(struct s_file *sfile)
 	ft_putchar('\n');
 }
 
+void	blocks_print_total(struct s_file *sfile)
+{
+	int	blocks;
+
+	blocks = 0;
+	ft_putstr("total ");
+	while (sfile != NULL)
+	{
+		blocks += sfile->block_count;
+		sfile = sfile->next;
+	}
+	ft_putnbr_endl(blocks);
+}
+
 void	s_file_print_members(struct s_file *sfile)
 {
 	while (sfile != NULL)
@@ -72,22 +60,19 @@ void	s_file_print_members(struct s_file *sfile)
 		ft_putstr("Permissions:\t");
 		ft_putendl(sfile->perms);
 		ft_putstr("Hardlinks:\t");
-		ft_putnbr(sfile->hlinks);
-		ft_putchar('\n');
+		ft_putnbr_endl(sfile->hlinks);
 		ft_putstr("User Name:\t");
 		ft_putendl(sfile->uname);
 		ft_putstr("Group Name:\t");
 		ft_putendl(sfile->gname);
 		ft_putstr("Size:\t\t");
-		ft_putnbr(sfile->size);
-		ft_putchar('\n');
+		ft_putnbr_endl(sfile->size);
 		ft_putstr("Modified Time:\t");
 		ft_putendl(sfile->mod_time);
 		ft_putstr("Name:\t\t");
 		ft_putendl(sfile->name);
 		ft_putstr("Is Directory:\t");
-		ft_putnbr(sfile->is_dir);
-		ft_putchar('\n');
+		ft_putnbr_endl(sfile->is_dir);
 		ft_putstr("Directory Path:\t");
 		ft_putendl(sfile->dir_path);
 		ft_putchar('\n');
@@ -97,6 +82,8 @@ void	s_file_print_members(struct s_file *sfile)
 
 void	handle_print(struct s_file *sfile, t_lsargs lsargs)
 {
+	if (lsargs.long_form == 1)
+		blocks_print_total(sfile);
 	while (sfile != NULL)
 	{
 		if (sfile->name[0] == '.')

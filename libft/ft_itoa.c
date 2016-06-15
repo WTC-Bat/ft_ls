@@ -16,7 +16,7 @@ char	*ft_itoa(int n)
 {
 	char	*c;
 
-	c = (char *)malloc(sizeof(char *));
+	c = (char *)malloc(sizeof(char) * 32);
 	if (n >= 0)
 	{
 		while (n != 0)
@@ -36,5 +36,6 @@ char	*ft_itoa(int n)
 		}
 		*--c = '-';
 	}
+	c[ft_strlen(c)] = '\0';
 	return (c);
 }

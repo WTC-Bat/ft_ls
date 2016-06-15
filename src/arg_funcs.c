@@ -80,8 +80,12 @@ t_lsargs	analyze_args(char **argv)
 		if (arg_ispath(argv[scnt]) == 1)
 		{
 			lsargs.path = argv[scnt];
-			if (lsargs.path[ft_strlen(lsargs.path)] != '/')
+			ft_putstr("LSARGS.PATH: ");
+			ft_putendl(lsargs.path);
+			if (lsargs.path[ft_strlen(lsargs.path) - 1] != '/')
 				lsargs.path = ft_appendc(lsargs.path, '/');
+			ft_putstr("LSARGS.PATH: ");
+			ft_putendl(lsargs.path);
 		}
 		else
 		{

@@ -37,10 +37,18 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		current->size = st.st_size;
 		current->ttmtime = st.st_mtime;
 		current->mod_time = format_time(&st.st_mtime);
+		current->block_size = st.st_blksize;
+		current->block_count = st.st_blocks;
 		current->name = dent->d_name;
-		current->is_dir = S_ISDIR(st.st_mode);
-		//current->dir_path = ft_strjoin(lsargs.path, dent->d_name);	//!
-		current->dir_path = pth;
+		current->is_dir = 0;			//
+		current->dir_path = "";
+		if (S_ISDIR(st.st_mode) > 0)	//
+		{								//
+			current->is_dir = 1;		//
+			current->dir_path = pth;	//
+		}								//
+		//current->is_dir = S_ISDIR(st.st_mode);
+		//current->dir_path = pth;
 		current->next = root;
 		root = current;
 	}
