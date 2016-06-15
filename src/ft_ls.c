@@ -49,7 +49,6 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 	return (root);
 }
 
-//static!
 struct s_file	*s_file_init(t_lsargs lsargs)
 {
 	DIR				*d;
@@ -66,38 +65,12 @@ struct s_file	*s_file_init(t_lsargs lsargs)
 	return (sfile);
 }
 
-/*
-static void				handle_recursion(struct s_file *sfile, t_lsargs lsargs)
+void					initialize(struct s_file *sfile, t_lsargs lsargs)
 {
-	struct s_file	*sfdir;
-	t_lsargs		lsargs;
-
-	//sfdir = NULL;
-	//lsargs = NULL;
-	while (sfile != NULL)
-	{
-		if (sfile->is_dir == 1)
-		{
-		}
-	}
-}
-*/
-
-int						main(int argc, char **argv)
-{
-	struct s_file	*sfile;
-	t_lsargs		lsargs;
-
-	if (argc == 0)
-		exit(1);
-	lsargs = analyze_args(argv);
-	sfile = s_file_init(lsargs);
 	if (lsargs.all_members == 1)
 		s_file_print_members(sfile);
-	//if (lsargs.recursive == 1)
-	//	handle_recursion(sfile, lsargs);
-	//else
-	//{
+	else
+	{
 		if (lsargs.order_time == 1)
 			if (lsargs.reverse == 1)
 				s_file_sort_mtime_rev(sfile);
@@ -108,7 +81,19 @@ int						main(int argc, char **argv)
 				s_file_sort_az_rev(sfile);
 			else
 				s_file_sort_az(sfile);
-	//}
-	handle_print(sfile, lsargs);
+		handle_print(sfile, lsargs);
+	}
+}
+
+int						main(int argc, char **argv)
+{
+	struct s_file	*sfile;
+	t_lsargs		lsargs;
+
+	if (argc == 0)
+		exit(1);
+	lsargs = analyze_args(argv);
+	sfile = s_file_init(lsargs);
+	initialize(sfile, lsargs);
 	return (0);
 }
