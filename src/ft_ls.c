@@ -12,14 +12,31 @@
 
 #include "../includes/ft_ls.h"
 
+static void				getelems2(struct s_file *current, struct stat st)
+{
+	struct passwd	*pd;
+	struct group	*gp;
+
+	pd = getpwuid(st.st_uid);
+	gp = getgrgid(st.st_gid);
+	current->perms = s_file_permissions(st);
+	current->hlinks = st.st_nlink;
+	current->uname = ft_strdup(pd->pw_name);
+	current->gname = gp->gr_name;
+	current->size = st.st_size;
+	current->ttmtime = st.st_mtime;
+	current->mod_time = format_time(&st.st_mtime);
+	current->block_count = st.st_blocks;
+	current->is_dir = 0;
+	current->dir_path = "";
+}
+
 static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 {
 	struct s_file	*root;
 	struct s_file	*current;
 	struct dirent	*dent;
 	struct stat		st;
-	struct passwd	*pd;
-	struct group	*gp;
 	char			*pth;
 
 	root = NULL;
@@ -27,30 +44,19 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 	{
 		pth = ft_strjoin(lsargs.path, dent->d_name);
 		stat(pth, &st);
-		pd = getpwuid(st.st_uid);
-		gp = getgrgid(st.st_gid);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
-		current->perms = s_file_permissions(st);
-		current->hlinks = st.st_nlink;
-		current->uname = ft_strdup(pd->pw_name);
-		current->gname = gp->gr_name;
-		current->size = st.st_size;
-		current->ttmtime = st.st_mtime;
-		current->mod_time = format_time(&st.st_mtime);
-		current->block_count = st.st_blocks;
 		current->name = dent->d_name;
-		current->is_dir = 0;			//
-		current->dir_path = "";
-		if (S_ISDIR(st.st_mode) > 0)	//
-		{								//
-			current->is_dir = 1;		//
-			current->dir_path = pth;	//
-		}								//
+		getelems2(current, st);
+		if (S_ISDIR(st.st_mode) > 0)
+		{
+			current->is_dir = 1;
+			current->dir_path = pth;
+		}
 		current->next = root;
 		root = current;
 	}
 	format_size(root);
-	//free(pth);
+	free(pth);
 	return (root);
 }
 
