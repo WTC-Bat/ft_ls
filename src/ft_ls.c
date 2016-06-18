@@ -46,8 +46,6 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 			current->is_dir = 1;		//
 			current->dir_path = pth;	//
 		}								//
-		//current->is_dir = S_ISDIR(st.st_mode);
-		//current->dir_path = pth;
 		current->next = root;
 		root = current;
 	}
