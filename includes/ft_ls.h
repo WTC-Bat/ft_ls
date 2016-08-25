@@ -42,8 +42,9 @@ t_lsargs		analyze_args(char **argv);
 int				arg_ispath(char *arg);
 int				args_are_valid(char **argv);
 void			do_sort(struct s_file *root, struct s_file *nxt);
-//void			format_size(struct s_file *sfile);//?
 char			*format_time(time_t *ttmtime);
+void			format_links(struct s_file *sfile);
+void			format_size(struct s_file *sfile);
 void			handle_print(struct s_file *sfile, t_lsargs lsargs);
 void			s_file_format(struct s_file *sfile);
 struct s_file	*s_file_init(t_lsargs lsargs);

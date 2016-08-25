@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:55 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/13 15:05:57 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/08/25 14:44:38 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ char	*s_file_permissions(struct stat st)
 
 	perms = (char *)malloc(sizeof(char) * 11);
 	ft_memset(perms, '-', 10);
-	if (S_ISDIR(st.st_mode) > 0)	//?
-		perms[0] = 'd';				//?
+	if (S_ISDIR(st.st_mode) > 0)
+		perms[0] = 'd';
 	if (st.st_mode & S_IRUSR)
 		perms[1] = 'r';
 	if (st.st_mode & S_IWUSR)
@@ -53,4 +53,10 @@ int		s_file_length(struct s_file *sfile)
 		sfile = sfile->next;
 	}
 	return (len);
+}
+
+void	s_file_format(struct s_file *sfile)
+{
+	format_size(sfile);
+	format_links(sfile);
 }

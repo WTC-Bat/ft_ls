@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:45 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/08/25 14:39:29 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/08/25 14:47:12 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char		*format_time(time_t *ttmtime)
 	return (fmttime);
 }
 
-static void	format_size(struct s_file *sfile)
+void		format_size(struct s_file *sfile)
 {
 	char			*fsize;
 	int				longest;
@@ -81,7 +81,7 @@ static void	format_size(struct s_file *sfile)
 	}
 }
 
-static void	format_links(struct s_file *sfile)
+void		format_links(struct s_file *sfile)
 {
 	char	*flinks;
 	int		longest;
@@ -106,10 +106,4 @@ static void	format_links(struct s_file *sfile)
 		sfile->strhlinks = flinks;
 		sfile = sfile->next;
 	}
-}
-
-void		s_file_format(struct s_file *sfile)
-{
-	format_size(sfile);
-	format_links(sfile);
 }
