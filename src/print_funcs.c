@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:46 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/06/14 15:21:34 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/08/25 15:24:39 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static void	s_file_prent_long(struct s_file *sfile)
 {
 	ft_putstr(sfile->perms);
 	ft_putchar(' ');
-	ft_putnbr(sfile->hlinks);
+	//ft_putnbr(sfile->hlinks);
+	ft_putstr(sfile->strhlinks);
 	ft_putchar(' ');
 	ft_putstr(sfile->uname);
 	ft_putchar(' ');
