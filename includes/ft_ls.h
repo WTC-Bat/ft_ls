@@ -24,6 +24,7 @@ struct			s_file
 {
 	char			*perms;
 	int				hlinks;
+	char			*strhlinks;
 	char			*uname;
 	char			*gname;
 	size_t			size;
@@ -41,11 +42,12 @@ t_lsargs		analyze_args(char **argv);
 int				arg_ispath(char *arg);
 int				args_are_valid(char **argv);
 void			do_sort(struct s_file *root, struct s_file *nxt);
-void			format_size(struct s_file *sfile);
+//void			format_size(struct s_file *sfile);//?
 char			*format_time(time_t *ttmtime);
 void			handle_print(struct s_file *sfile, t_lsargs lsargs);
-int				s_file_length(struct s_file *sfile);
+void			s_file_format(struct s_file *sfile);
 struct s_file	*s_file_init(t_lsargs lsargs);
+int				s_file_length(struct s_file *sfile);
 char			*s_file_permissions(struct stat st);
 void			s_file_sort_az(struct s_file *sfile);
 void			s_file_sort_az_rev(struct s_file *sfile);
