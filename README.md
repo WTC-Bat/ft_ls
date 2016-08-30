@@ -11,3 +11,5 @@
 0	-	free and clear unsused memory	(optional)
 
 0	-	padding for group name
+
+0	-	symlink printing occurs even when -l is not specified
