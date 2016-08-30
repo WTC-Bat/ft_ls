@@ -6,7 +6,11 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/08/30 14:24:08 by mvanwyk          ###   ########.fr       */
+=======
+/*   Updated: 2016/08/30 15:26:41 by mvanwyk          ###   ########.fr       */
+>>>>>>> master-lstat
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +47,9 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 	while ((dent = readdir(d)) != NULL)
 	{
 		pth = ft_strjoin(lsargs.path, dent->d_name);
-		stat(pth, &st);
+		lstat(pth, &st);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
-		current->name = dent->d_name;
+		current->name = s_get_name(dent, st, pth);
 		getelems2(current, st);
 		if (S_ISDIR(st.st_mode) > 0)
 		{
