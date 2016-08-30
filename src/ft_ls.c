@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/08/30 15:38:43 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/08/30 16:24:41 by mvanwyk          ###   ########.fr       */
 /*   Updated: 2016/08/30 15:26:41 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -55,9 +55,9 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		}
 		current->next = root;
 		root = current;
+		free(pth);
 	}
 	s_file_format(root);
-	free(pth);
 	return (root);
 }
 

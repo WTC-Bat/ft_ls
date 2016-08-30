@@ -6,9 +6,8 @@
 		size.
 
 		^ - This may be fixed. Requires further testing
+		^ - Seems to be fixed, no problems so far
 
-0	-	free and clear unsused memory
+0	-	free and clear unsused memory	(optional)
 
 0	-	padding for group name
-
-0	-	fix blockcount. Seems it must count the files that ARE NOT hidden, unless -a is specified

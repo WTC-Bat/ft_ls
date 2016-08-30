@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:46 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/08/30 14:17:07 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/08/30 16:15:02 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,35 @@ static void	s_file_prent_long(struct s_file *sfile)
 	ft_putchar('\n');
 }
 
+/*
+**	Block count must be modified to include/exclude hidden files depending on whether the -a option
+**	is specified or not.
+*/
+void	blocks_print_total(struct s_file *sfile, t_lsargs lsargs)
+{
+	int	blocks;
+
+	blocks = 0;
+	ft_putstr("total ");
+	while (sfile != NULL)
+	{
+		if (lsargs.show_all == 0)
+		{
+			if (sfile->name[0] != '.')
+			{
+				blocks += sfile->block_count;
+			}
+		}
+		else
+		{
+			blocks += sfile->block_count;
+		}
+		sfile = sfile->next;
+	}
+	ft_putnbr_endl(blocks);
+}
+
+/*
 void	blocks_print_total(struct s_file *sfile)
 {
 	int	blocks;
@@ -52,6 +81,7 @@ void	blocks_print_total(struct s_file *sfile)
 	}
 	ft_putnbr_endl(blocks);
 }
+*/
 
 void	s_file_print_members(struct s_file *sfile)
 {
@@ -83,7 +113,7 @@ void	s_file_print_members(struct s_file *sfile)
 void	handle_print(struct s_file *sfile, t_lsargs lsargs)
 {
 	if (lsargs.long_form == 1)
-		blocks_print_total(sfile);
+		blocks_print_total(sfile, lsargs);
 	while (sfile != NULL)
 	{
 		if (sfile->name[0] == '.')
