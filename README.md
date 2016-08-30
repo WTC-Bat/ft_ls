@@ -5,6 +5,8 @@
 		digit of the minutes, while the rest is the same as the
 		size.
 
+		^ - This may be fixed. Requires further testing
+
 0	-	free and clear unsused memory
 
 0	-	padding for group name
