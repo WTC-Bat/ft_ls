@@ -6,3 +6,5 @@
 		size.
 
 0	-	free and clear unsused memory
+
+0	-	padding for group name
