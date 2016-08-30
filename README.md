@@ -8,3 +8,5 @@
 0	-	free and clear unsused memory
 
 0	-	padding for group name
+
+0	-	fix blockcount. Seems it must count the files that ARE NOT hidden, unless -a is specified
