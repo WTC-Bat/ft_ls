@@ -62,6 +62,7 @@ void		format_size(struct s_file *sfile)
 	int				len;
 
 	longest = get_longest_size(sfile);
+	ft_printf("GET_LONGEST_SIZE:\tPASS\n");
 	cnt = 0;
 	while (sfile != NULL)
 	{
@@ -89,16 +90,20 @@ void		format_links(struct s_file *sfile)
 	int		len;
 
 	longest = get_longest_links(sfile);
+	ft_printf("GET_LONGEST_LINKS:\tPASS\n");
 	cnt = 0;
 	while (sfile != NULL)
 	{
 		flinks = ft_itoa(sfile->hlinks);
+		ft_printf("FLINKS-ITOA:\tPASS\n");
 		len = ft_strlen(flinks);
 		if (len < longest)
 		{
 			while (cnt < (longest - len))
 			{
-				flinks = ft_prependc(flinks, ' ');
+				ft_printf("PRE-PREPENDC:\tPASS\n");
+				flinks = ft_prependc(flinks, ' ');	//!??!? USE MEMSET & JOIN/CAT
+				ft_printf("PREPENDC:\tPASS\n");
 				cnt++;
 			}
 			cnt = 0;
