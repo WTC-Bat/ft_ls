@@ -80,7 +80,7 @@ char	*s_get_name(struct dirent *dent, struct stat st, char *pth)
 void	s_file_format(struct s_file *sfile)
 {
 	format_size(sfile);
-	ft_printf("FORMAT_SIZE:\tPASS\n");
+	//ft_printf("FORMAT_SIZE:\tPASS\n");
 	format_links(sfile);
-	ft_printf("FORMAT_LINKS:\tPASS\n");
+	//ft_printf("FORMAT_LINKS:\tPASS\n");
 }
