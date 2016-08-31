@@ -56,24 +56,31 @@ int		s_file_length(struct s_file *sfile)
 	return (len);
 }
 
-char	*s_get_name(struct dirent *dent, struct stat st, char *pth)
+//char	*s_get_name(struct dirent *dent, struct stat st, char *pth)
+char	*s_get_name(char *dnm, struct stat st, char *pth, t_lsargs la)
 {
 	char	*name;
 	char	*realname;
 
-	name = dent->d_name;
+	//name = dent->d_name;
+	name = dnm;
+	//name = ft_strdup(dnm);
 	realname = NULL;
 	if (S_ISLNK(st.st_mode) > 0)
 	{
-		realname = (char *)malloc(sizeof(char) * 1024);
-		readlink(pth, realname, 1024);
-		name = ft_strjoin(name, " -> ");
-		name = ft_strjoin(name, realname);
+		if (la.long_form == 1)
+		{
+			realname = (char *)malloc(sizeof(char) * 1024);
+			readlink(pth, realname, 1024);
+			name = ft_strjoin(name, " -> ");
+			name = ft_strjoin(name, realname);
+		}
 	}
-	else
-	{
-		name = dent->d_name;
-	}
+	//else
+	//{
+	//	//name = dent->d_name;
+	//	name = dnm;
+	//}
 	return (name);
 }
 

@@ -47,7 +47,8 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		lstat(pth, &st);
 		current = (struct s_file *)malloc(sizeof(struct s_file));
 		//current->name = dent->d_name;
-		current->name = s_get_name(dent, st, pth);
+		//current->name = s_get_name(dent, st, pth);
+		current->name = s_get_name(dent->d_name, st, pth, lsargs);
 		getelems2(current, st);
 		if (S_ISDIR(st.st_mode) > 0)
 		{

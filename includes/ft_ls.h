@@ -55,6 +55,7 @@ void			s_file_sort_az_rev(struct s_file *sfile);
 void			s_file_print_members(struct s_file *sfile);
 void			s_file_sort_mtime(struct s_file *sfile);
 void			s_file_sort_mtime_rev(struct s_file *sfile);
-char			*s_get_name(struct dirent *dent, struct stat st, char *pth);
+//char			*s_get_name(struct dirent *dent, struct stat st, char *pth);
+char			*s_get_name(char *dnm, struct stat st, char *pth, t_lsargs la);
 
 #endif
