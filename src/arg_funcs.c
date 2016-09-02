@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:29 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/08/30 14:14:43 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 10:54:13 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ static void		lsargs_set(char c, t_lsargs *lsargs)
 		lsargs->all_members = 1;
 }
 
+/*
+**	Could be improved. As is, will only recognize arg as a
+**	path if it contains '/'
+*/
 int			arg_ispath(char *arg)
 {
 	if (ft_strchr(arg, '/') == NULL)

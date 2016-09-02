@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:55 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/08/30 16:16:25 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 11:07:53 by mvanwyk          ###   ########.fr       */
 /*   Updated: 2016/08/30 15:26:53 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -64,7 +64,7 @@ char	*s_get_name(char *dnm, struct stat st, char *pth, t_lsargs la)
 
 	//name = dent->d_name;
 	name = dnm;
-	//name = ft_strdup(dnm);
+	//name = ft_strdup(dnm);	<-?
 	realname = NULL;
 	if (S_ISLNK(st.st_mode) > 0)
 	{
@@ -88,4 +88,14 @@ void	s_file_format(struct s_file *sfile)
 {
 	format_size(sfile);
 	format_links(sfile);
+}
+
+void	s_file_free(struct s_file *sfile)	////
+{
+	if (sfile->dir_path != NULL)
+		free(sfile->dir_path);
+	free(sfile->uname);
+	free(sfile->gname);
+	//
+	free(sfile);
 }

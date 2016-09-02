@@ -47,6 +47,7 @@ void			format_links(struct s_file *sfile);
 void			format_size(struct s_file *sfile);
 void			handle_print(struct s_file *sfile, t_lsargs lsargs);
 void			s_file_format(struct s_file *sfile);
+void			s_file_free(struct s_file *sfile);
 struct s_file	*s_file_init(t_lsargs lsargs);
 int				s_file_length(struct s_file *sfile);
 char			*s_file_permissions(struct stat st);

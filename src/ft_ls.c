@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/08/30 16:24:41 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 11:08:16 by mvanwyk          ###   ########.fr       */
 /*   Updated: 2016/08/30 15:26:41 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,13 +23,15 @@ static void				getelems2(struct s_file *current, struct stat st)
 	current->perms = s_file_permissions(st);
 	current->hlinks = st.st_nlink;
 	current->uname = ft_strdup(pd->pw_name);
-	current->gname = gp->gr_name;
+	//current->gname = gp->gr_name;
+	current->gname = ft_strdup(gp->gr_name);
 	current->size = st.st_size;
 	current->ttmtime = st.st_mtime;
 	current->mod_time = format_time(&st.st_mtime);
 	current->block_count = st.st_blocks;
 	current->is_dir = 0;
-	current->dir_path = "";
+	//current->dir_path = "";
+	current->dir_path = NULL;
 }
 
 static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
@@ -53,11 +55,14 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		if (S_ISDIR(st.st_mode) > 0)
 		{
 			current->is_dir = 1;
-			current->dir_path = pth;
+			//current->dir_path = pth;
+			current->dir_path = ft_strdup(pth);
 		}
 		current->next = root;
 		root = current;
-		//free(pth);
+		pth = NULL;				////
+		free(pth);				////
+		s_file_free(current);	////
 	}
 	s_file_format(root);
 	return (root);
@@ -109,6 +114,7 @@ int						main(int argc, char **argv)
 	lsargs = analyze_args(argv);
 	sfile = s_file_init(lsargs);
 	initialize(sfile, lsargs);
-	free(sfile);
+	//free(sfile);//?
+	s_file_free(sfile);		////
 	return (0);
 }
