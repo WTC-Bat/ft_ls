@@ -11,3 +11,5 @@
 0	-	free and clear unsused memory	!
 
 0	-	padding for group name
+
+0	-	segafaults seem somewhat fixed. More testing required
