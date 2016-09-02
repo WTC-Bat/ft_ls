@@ -20,6 +20,7 @@ static void				getelems2(struct s_file *current, struct stat st)
 
 	pd = getpwuid(st.st_uid);
 	gp = getgrgid(st.st_gid);
+	ft_putendl("GETTING PERMS");
 	current->perms = s_file_permissions(st);
 	current->hlinks = st.st_nlink;
 	current->uname = ft_strdup(pd->pw_name);
@@ -50,7 +51,9 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		current = (struct s_file *)malloc(sizeof(struct s_file));
 		//current->name = dent->d_name;
 		//current->name = s_get_name(dent, st, pth);
+		ft_putendl("GETTING NAME");
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
+		ft_putendl("GOT NAME");
 		getelems2(current, st);
 		ft_putendl("GOTELEMS");
 		if (S_ISDIR(st.st_mode) > 0)
