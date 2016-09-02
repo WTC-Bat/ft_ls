@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:04:55 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/09/02 11:07:53 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:47:41 by mvanwyk          ###   ########.fr       */
 /*   Updated: 2016/08/30 15:26:53 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -56,15 +56,13 @@ int		s_file_length(struct s_file *sfile)
 	return (len);
 }
 
-//char	*s_get_name(struct dirent *dent, struct stat st, char *pth)
 char	*s_get_name(char *dnm, struct stat st, char *pth, t_lsargs la)
 {
 	char	*name;
 	char	*realname;
 
-	//name = dent->d_name;
-	name = dnm;
-	//name = ft_strdup(dnm);	<-?
+	//name = dnm;
+	name = ft_strdup(dnm);	////
 	realname = NULL;
 	if (S_ISLNK(st.st_mode) > 0)
 	{
@@ -73,29 +71,35 @@ char	*s_get_name(char *dnm, struct stat st, char *pth, t_lsargs la)
 			realname = (char *)malloc(sizeof(char) * 1024);
 			readlink(pth, realname, 1024);
 			name = ft_strjoin(name, " -> ");
-			name = ft_strjoin(name, realname);
+			//name = ft_strjoin(name, realname);
+			name = ft_strcat(name, realname);
+			realname = NULL;	////	//?
+			free(realname);		////	//?
 		}
 	}
-	//else
-	//{
-	//	//name = dent->d_name;
-	//	name = dnm;
-	//}
 	return (name);
 }
 
 void	s_file_format(struct s_file *sfile)
 {
 	format_size(sfile);
+	ft_putendl("FORMAT_SIZE DONE");
 	format_links(sfile);
+	ft_putendl("FORMAT_LINKS DONE");
 }
 
 void	s_file_free(struct s_file *sfile)	////
 {
+	//loop
 	if (sfile->dir_path != NULL)
 		free(sfile->dir_path);
 	free(sfile->uname);
 	free(sfile->gname);
+	free(sfile->name);
+	free(sfile->mod_time);
+	free(sfile->perms);
+	free(sfile->strhlinks);	//?
+	free(sfile->strsize);	//?
 	//
 	free(sfile);
 }

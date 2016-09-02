@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:29 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/09/02 10:54:13 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:36:45 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ t_lsargs	analyze_args(char **argv)
 	scnt = 1;
 	ccnt = 0;
 	lsargs_init(&lsargs);
-	lsargs.path = "./";
+	//lsargs.path = "./";					//?
+	lsargs.path = ft_strdup("./");	//?
 	if (args_are_valid(argv) == 0)
 	{
 		ft_putendl_fd("Error: Bad option format.", 2);
@@ -83,10 +84,12 @@ t_lsargs	analyze_args(char **argv)
 	{
 		if (arg_ispath(argv[scnt]) == 1)
 		{
-			lsargs.path = argv[scnt];
+			//lsargs.path = argv[scnt];
+			lsargs.path = ft_strdup(argv[scnt]);	////
 			if (lsargs.path[ft_strlen(lsargs.path) - 1] != '/')
-				lsargs.path = ft_appendc(lsargs.path, '/');
-		}
+				lsargs.path = ft_appendc(lsargs.path, '/');	//?
+				//lsargs.path = ft_strcat(lsargs.path, "/");		////	//?
+		}	
 		else
 		{
 			while (argv[scnt][ccnt] != '\0')

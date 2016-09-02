@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:45 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/09/02 11:02:15 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 13:05:30 by mvanwyk          ###   ########.fr       */
 /*   Updated: 2016/08/30 15:27:30 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -62,6 +62,7 @@ void		format_size(struct s_file *sfile)
 	int				len;
 
 	longest = get_longest_size(sfile);
+	ft_putendl("GET LONGEST SIZE DONE");
 	pad = NULL;
 	while (sfile != NULL)
 	{
@@ -69,7 +70,10 @@ void		format_size(struct s_file *sfile)
 		len = ft_strlen(fsize);
 		if (len < longest)
 		{
+			ft_putendl("PRE-MALLOC");
+			ft_putnbr_endl((longest - len));
 			pad = (char *)malloc(sizeof(char) * (longest - len));
+			ft_putendl("POST-MALLOC");
 			ft_memset(pad, ' ', (longest - len));
 			fsize = ft_strcat(pad, fsize);
 			//pad = ft_strcat(pad, fsize);

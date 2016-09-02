@@ -6,7 +6,7 @@
 /*   By: mvanwyk <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 15:02:58 by mvanwyk           #+#    #+#             */
-/*   Updated: 2016/09/02 11:08:16 by mvanwyk          ###   ########.fr       */
+/*   Updated: 2016/09/02 12:46:51 by mvanwyk          ###   ########.fr       */
 /*   Updated: 2016/08/30 15:26:41 by mvanwyk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -52,19 +52,28 @@ static struct s_file	*s_file_getelems(DIR *d, t_lsargs lsargs)
 		//current->name = s_get_name(dent, st, pth);
 		current->name = s_get_name(dent->d_name, st, pth, lsargs);
 		getelems2(current, st);
+		ft_putendl("GOTELEMS");
 		if (S_ISDIR(st.st_mode) > 0)
 		{
 			current->is_dir = 1;
 			//current->dir_path = pth;
 			current->dir_path = ft_strdup(pth);
 		}
+		ft_putendl("IS_DIR-PASS");
 		current->next = root;
+		ft_putendl("CURRENT->NEXT");
 		root = current;
+		ft_putendl("ROOT = CURRENT");
 		pth = NULL;				////
+		ft_putendl("PTH = NULL");
 		free(pth);				////
-		s_file_free(current);	////
+		ft_putendl("FREE(PTH)");
+		//s_file_free(current);	////
 	}
 	s_file_format(root);
+	ft_putendl("S_FILE_FORMAT DONE");
+	//if (current != NULL)
+	//	free(current);
 	return (root);
 }
 
@@ -115,6 +124,7 @@ int						main(int argc, char **argv)
 	sfile = s_file_init(lsargs);
 	initialize(sfile, lsargs);
 	//free(sfile);//?
+	free(lsargs.path);	//?	////
 	s_file_free(sfile);		////
 	return (0);
 }
